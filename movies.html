@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>My Movies</title>
+		<style>
+			h1{text-align:center;}
+			h4{margin:0;padding:5px;background:#f4f4f4;}
+			li{list-style:none;padding-left:5px;}
+			#container{width:600px;margin:auto;overflow:hidden;}
+		</style>
+		<script>
+			var movies = [
+							{
+								title:"The Godfather",
+								year:"1972",
+								genre:"Drama",
+								director:"Francis Ford Copolla"
+							},
+							{
+								title:"Superbad",
+								year:"2007",
+								genre:"Comedy",
+								director:"Greg M."
+							},
+							{
+								title:"Spiderman Homecoming",
+								year:"2017",
+								genre:"Action",
+								director:"I dunno"
+							},
+							{
+								title:"Team America World Police",
+								year:"2005",
+								genre:"Comedy",
+								director:"M. Stone & T. Parker"
+							},
+							{
+								title:"The Expendables",
+								year:"2010",
+								genre:"Action",
+								director:"S. Stalone"
+							}
+			];
+		</script>
+	</head>
+	
+	<body>
+		<div id="container">
+		<h1>Look at dees Movies!</h1>
+			<ul>
+				<script>
+					for(i=0;i < movies.length; i++){
+						document.write('<h4>' +movies[i].title+'</h4>');
+						document.write('<li>' +movies[i].year+'</li>');
+						document.write('<li>' +movies[i].genre+'</li>');
+						document.write('<li>' +movies[i].director+'</li>');
+					};
+					//document.write(movies[2].title);
+				</script>
+			</ul>
+		</div>
+	</body>
+</html>
+
+
+
+
