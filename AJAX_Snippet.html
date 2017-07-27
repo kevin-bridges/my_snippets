@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>AJAX Snippet</title>
+	
+		<script>
+			function getDataFromText(){
+				var xmlhttp;
+				if (window.XMLHttpRequest){
+					//code for IE7+, Firefox, Chrome, Opera, Safari
+					xmlhttp = new XMLHttpRequest();
+				} else {
+					//code for IE6, IE5
+					xmlhttp = new ActiveXObject["Microsoft.XMLHTTP"];
+				}
+				xmlhttp.onreadystatechange = function(){
+					if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
+						document.getElementById("myDiv").innerHTML = xmlhttp.responseText;
+					}
+				}
+				xmlhttp.open("GET","text.txt", true);
+				xmlhttp.send();
+			}
+			
+			function getDataFromXML(){
+				var xmlhttp;
+				if (window.XMLHttpRequest){
+					//code for IE7+, Firefox, Chrome, Opera, Safari
+					xmlhttp = new XMLHttpRequest();
+				} else {
+					//code for IE6, IE5
+					xmlhttp = new ActiveXObject["Microsoft.XMLHTTP"];
+				}
+				xmlhttp.onreadystatechange = function(){
+					if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
+						xmldata = xmlhttp.responseXML;
+						var movies = xmldata.getElementsByTagName("movie");
+						var output="<ul>";
+						output += movies[0].getElementsByTagName('title')[0].firstChild.nodeValue;
+						document.getElementById("data").innerHTML = output;
+					}
+				}
+				xmlhttp.open("GET","movies.xml", true);
+				xmlhttp.send();
+			}
+			
+			function getDataFromJSON(){
+				var xmlhttp;
+				if (window.XMLHttpRequest){
+					//code for IE7+, Firefox, Chrome, Opera, Safari
+					xmlhttp = new XMLHttpRequest();
+				} else {
+					//code for IE6, IE5
+					xmlhttp = new ActiveXObject["Microsoft.XMLHTTP"];
+				}
+				xmlhttp.onreadystatechange = function(){
+					if(xmlhttp.readyState == 4 && xmlhttp.status == 200){
+						var jsondata = JSON.parse(xmlhttp.responseText); // retrieve result as
+						var movies = jsondata.movies
+						var output="<ul>";
+						for (var i=0; i < movies.length; i++){
+							output += '<li>'+movies[i].title+'</li>';
+						}
+						output+='</li>';
+						document.getElementById("data").innerHTML = output;
+					}
+				}
+				xmlhttp.open("GET","movies.json", true);
+				xmlhttp.send();
+			}
+			
+		</script>
+	</head>
+	<body>
+		<div id="myDiv">
+			<h2>
+				Let AJAX change this text
+			</h2>
+		</div>
+		<button type="button" onclick="getDataFromText()">Change Content</button>
+	</body>
+</html>
+	
+		
