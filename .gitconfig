@@ -1,0 +1,51 @@
+[user]
+               name = Hello
+               email = Hello@email
+[core]
+               editor = vim
+
+[color]
+               ui = auto
+
+[format]
+               pretty = "%H %ci %ce %ae %d %s"
+
+[alias]
+               myconfigs = config --list --show-origin
+               econfigs = config --global -e
+               cp = cherry-pick
+               ssb = status -sb
+               stp = status --porcelain
+               cl = clone
+               co = checkout
+               br = branch 
+               bo = name-rev --name-only HEAD
+               
+               l = log --graph --oneline --decorate --all
+               lgp =  log --pretty --oneline --decorate --all
+               slog = shortlog
+               l1 = log --pretty=oneline
+               la = "!git config -l | grep alias | cut -c 7-"
+               lnc = log --pretty=format:"%h\\ %s\\ [%cn]"
+               ll = log --pretty=format:"%C(White)%h%C(Magenta)%d\\ %Creset%s%C(Green)\\ [%cn]" --decorate --numstat
+               lds = log --pretty=format:"%C(White)%h\\ %ad%C(Magenta)%d\\ %Creset%s%C(Green)\\ [%cn]" --decorate --date=short
+               ld = log --pretty=format:"%C(White)%h\\ %ad%C(Magenta)%d\\ %Creset%s%C(Green)\\ [%cn]" --decorate --date=relative
+
+               filelog = log -u
+               fl = log -u
+
+               dq = diff --name-only master 
+               diff = diff --word-diff
+               dc = diff --cached
+               dlc = diff --cached HEAD^
+               diffrev  = "!f() { git diff "$1"^.."$1"; }; f"
+               d1 = diff HEAD~1 HEAD
+               d1fno = diff HEAD~1 HEAD --name-only
+               
+               rset = clean -f -d; git reset --hard
+               trymerge = "!f(){ git merge --no-commit --no-ff \"$1\"; git merge --abort; echo \"Merge aborted\"; };f "
+               mergetest = "!f(){ git merge --no-commit --no-ff \"$1\"; git merge --abort; echo \"Merge aborted\"; };f "
+               pushbranch = "push --set-upstream origin $1"
+               
+               tagcommit = rev-list -n 1 # + tagname
+               tagz = log --tags --simplify-by-decoration --pretty="format:%ci%d"
