@@ -1,0 +1,7 @@
+# Delete dir(s) based on creation time
+
+Get-ChildItem "C:\temp" -Recurse -File | Where CreationTime -lt  (Get-Date).AddDays(-15)  | Remove-Item -Force
+
+# Delete dirs and keep N number of dirs
+
+Get-ChildItem "C:\temp" -Directory | Sort-Object CreationTime -Descending | Select-Object -Skip 5 | Remove-Item -Recurse -Force
